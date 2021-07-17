@@ -70,6 +70,7 @@ class UserController extends Controller
        
     }
 
+    //**************************************************************************************************** */
     public function login(Request $request){
             
         
@@ -93,7 +94,7 @@ class UserController extends Controller
                 );
                 
             }else{
-                //sifrar la contraseña
+                //cifrar la contraseña
                 $pwd = hash('sha256', $params->password);
                 //Devolver el token
                 $signup = $jwtAuth->signup($params->email, $pwd);
@@ -107,5 +108,18 @@ class UserController extends Controller
         
     }
 
+//**************************************************************************************************** */
 
+    public function update(Request $request){
+        $token = $request->header('Authorization');
+        $jwtAuth = new \JwtAuth();
+        $checkToken = $jwtAuth->checkToken($token);
+
+        if($checkToken){
+            echo 'Correcto';
+        }else{
+            echo 'login Error';
+        }
+
+    }
 }
