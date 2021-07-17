@@ -21,4 +21,4 @@ Route::get('/pruebaOrm', 'PruebaController@testORM' );
 
 //Rutas de Usuario
 Route::post('/api/register', 'UserController@register');
-Route::get('/api/login', 'UserController@login');
+Route::post('/api/login', 'UserController@login');
